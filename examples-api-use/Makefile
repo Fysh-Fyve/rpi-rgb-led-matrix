@@ -1,7 +1,10 @@
 CFLAGS=-Wall -O3 -g -Wextra -Wno-unused-parameter
 CXXFLAGS=$(CFLAGS)
-OBJECTS=demo-main.o minimal-example.o c-example.o text-example.o scrolling-text-example.o clock.o ledcat.o input-example.o pixel-mover.o
-BINARIES=demo minimal-example c-example text-example scrolling-text-example clock ledcat input-example pixel-mover
+OBJECTS=demo-main.o minimal-example.o c-example.o text-example.o \
+	scrolling-text-example.o clock.o ledcat.o input-example.o \
+	pixel-mover.o fysh.o
+BINARIES=demo minimal-example c-example text-example scrolling-text-example \
+	 clock ledcat input-example pixel-mover fysh
 
 # Where our library resides. You mostly only need to change the
 # RGB_LIB_DISTRIBUTION, this is where the library is checked out.
@@ -45,6 +48,9 @@ image-example: image-example.o $(RGB_LIBRARY)
 # Since the C example uses the C++ library underneath, which depends on C++
 # runtime stuff, you still have to also link -lstdc++
 c-example : c-example.o $(RGB_LIBRARY)
+	$(CC) $< -o $@ $(LDFLAGS) -lstdc++
+
+fysh : fysh.o $(RGB_LIBRARY)
 	$(CC) $< -o $@ $(LDFLAGS) -lstdc++
 
 %.o : %.cc
