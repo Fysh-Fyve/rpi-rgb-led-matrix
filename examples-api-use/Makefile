@@ -32,6 +32,7 @@ input-example : input-example.o
 text-example: text-example.o
 scrolling-text-example : scrolling-text-example.o
 clock : clock.o
+fysh : fysh.o
 ledcat : ledcat.o
 pixel-mover : pixel-mover.o
 
@@ -48,9 +49,6 @@ image-example: image-example.o $(RGB_LIBRARY)
 # Since the C example uses the C++ library underneath, which depends on C++
 # runtime stuff, you still have to also link -lstdc++
 c-example : c-example.o $(RGB_LIBRARY)
-	$(CC) $< -o $@ $(LDFLAGS) -lstdc++
-
-fysh : fysh.o $(RGB_LIBRARY)
 	$(CC) $< -o $@ $(LDFLAGS) -lstdc++
 
 %.o : %.cc
