@@ -18,7 +18,6 @@
 #include <algorithm>
 
 using std::max;
-using std::min;
 
 #define TERM_ERR "\033[1;31m"
 #define TERM_NORM "\033[0m"
